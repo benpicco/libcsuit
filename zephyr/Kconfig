@@ -1,0 +1,9 @@
+# Copyright (c) 2026 The Zephyr Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+config LIBCSUIT
+	bool "Enable libcsuit library"
+	help
+	  Enable IETF SUIT manifest encoding and decoding support using libcsuit.
+	  This library provides support for parsing, processing, and generating
+	  SUIT (Software Updates for Internet of Things) manifests.

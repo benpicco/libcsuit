@@ -1,0 +1,4 @@
+name: libcsuit
+build:
+  cmake: zephyr
+  kconfig: zephyr/Kconfig
