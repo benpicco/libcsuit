@@ -3127,7 +3127,7 @@ suit_err_t suit_processor_init(
     bool report_invoke_pending,
     UsefulBuf *manifest)
 {
-    memset(processor_context, 0, sizeof(processor_context) + buf_size);
+    memset(processor_context, 0, sizeof(*processor_context) + buf_size);
     // just to be sure
     processor_context->final_state = SUIT_SUCCESS;
     processor_context->encoded_component = NULLUsefulBufC;
