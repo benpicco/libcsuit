@@ -7,12 +7,14 @@ if(CONFIG_LIBCSUIT)
   zephyr_library_named(modules_csuit)
 
   # Add include directories
+  # NOTE: zephyr/include must come before other paths to override bundled mbedtls headers
+  # with stubs/shims that are ABI-compatible with TF-PSA-Crypto.
   zephyr_library_include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${LIBCSUIT_SRC}/inc
     ${LIBCSUIT_SRC}/3rdparty/QCBOR/inc
     ${LIBCSUIT_SRC}/3rdparty/t_cose/inc
     ${LIBCSUIT_SRC}/3rdparty/t_cose/src
-    ${LIBCSUIT_SRC}/3rdparty/mbedtls/include
   )
 
   # Add QCBOR sources with float support disabled
@@ -42,9 +44,7 @@ if(CONFIG_LIBCSUIT)
     ${LIBCSUIT_SRC}/3rdparty/t_cose/src/t_cose_encrypt_enc.c
     ${LIBCSUIT_SRC}/3rdparty/t_cose/src/t_cose_encrypt_dec.c
     ${LIBCSUIT_SRC}/3rdparty/t_cose/src/t_cose_qcbor_gap.c
-    ${LIBCSUIT_SRC}/3rdparty/t_cose/src/t_cose_recipient_enc_esdh.c
     ${LIBCSUIT_SRC}/3rdparty/t_cose/src/t_cose_recipient_enc_keywrap.c
-    ${LIBCSUIT_SRC}/3rdparty/t_cose/src/t_cose_recipient_dec_esdh.c
     ${LIBCSUIT_SRC}/3rdparty/t_cose/src/t_cose_recipient_dec_keywrap.c
     ${LIBCSUIT_SRC}/3rdparty/t_cose/crypto_adapters/t_cose_psa_crypto.c
   )
@@ -68,5 +68,10 @@ if(CONFIG_LIBCSUIT)
     T_COSE_USE_PSA_CRYPTO=1
     USEFULBUF_DISABLE_ALL_FLOAT
     MBEDTLS_ALLOW_PRIVATE_ACCESS
+    MBEDTLS_ASN1_WRITE_C
+    T_COSE_DISABLE_KEYWRAP
+    T_COSE_DISABLE_ESDH
+    LIBCSUIT_DISABLE_ENCRYPTION
+    psa_key_handle_t=psa_key_id_t
   )
 endif()
