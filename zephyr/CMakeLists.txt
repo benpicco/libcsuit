@@ -17,6 +17,14 @@ if(CONFIG_LIBCSUIT)
     ${LIBCSUIT_SRC}/3rdparty/t_cose/src
   )
 
+  # Public API headers consumed by application code (e.g. #include "csuit/..." )
+  # plus transitive header dependencies used by libcsuit public headers.
+  zephyr_include_directories(
+    ${LIBCSUIT_SRC}/inc
+    ${LIBCSUIT_SRC}/3rdparty/QCBOR/inc
+    ${LIBCSUIT_SRC}/3rdparty/t_cose/inc
+  )
+
   # Add QCBOR sources with float support disabled
   zephyr_library_sources(
     ${LIBCSUIT_SRC}/3rdparty/QCBOR/src/qcbor_encode.c
