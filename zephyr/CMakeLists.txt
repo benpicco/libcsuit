@@ -66,7 +66,6 @@ if(CONFIG_LIBCSUIT)
     ${LIBCSUIT_SRC}/src/suit_manifest_encode.c
     ${LIBCSUIT_SRC}/src/suit_manifest_decode.c
     ${LIBCSUIT_SRC}/src/suit_manifest_process.c
-    ${LIBCSUIT_SRC}/src/suit_manifest_callbacks.c
     ${LIBCSUIT_SRC}/src/suit_reporting_engine.c
     ${LIBCSUIT_SRC}/src/suit_report_print.c
   )

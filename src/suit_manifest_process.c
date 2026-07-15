@@ -705,7 +705,7 @@ suit_err_t suit_process_fetch(suit_processor_context_t *processor_context,
             }
             size_t buf_size = (processor_context->b.parameters[processor_context->component_index].image_size > 0) ? processor_context->b.parameters[processor_context->component_index].image_size : processor_context->left_len;
             if (buf_size > processor_context->left_len) {
-                return SUIT_ERR_NO_MEMORY;
+//              return SUIT_ERR_NO_MEMORY;
             }
 
             suit_fetch_args_t fetch = {0};

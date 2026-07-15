@@ -21,7 +21,9 @@
 extern "C" {
 #endif
 
+#ifndef BIT
 #define BIT(nr) (1UL << (nr))
+#endif
 
 extern uint64_t LIBCSUIT_SUPPORTED_VERSIONS[];
 extern size_t LIBCSUIT_SUPPORTED_VERSIONS_LEN;
